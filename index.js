@@ -1,5 +1,6 @@
 import express from "express";
 import { config } from "dotenv";
+import cors from "cors";
 
 import connectDB from "./config/connectDB.js";
 import Routes from "./routes/Snippet.routes.js";
@@ -10,6 +11,7 @@ config();
 const PORT = process.env.PORT;
 connectDB();
 
+app.use(cors());
 app.use(express.json());
 app.use("/api/v1/snippets", Routes);
 
